@@ -1,16 +1,22 @@
 const { EmbedBuilder } = require("discord.js");
 
 function hasTransformationNotes(transformation) {
-  return (
-    transformation.transformationNotes &&
-    (
-      transformation.transformationNotes.physicalEffects ||
-      transformation.transformationNotes.mentalEffects
-    )
+  const notes = transformation.transformationNotes;
+  const mentalEffects = notes?.mentalEffects;
+
+  return Boolean(
+    notes &&
+      (
+        notes.physicalEffects ||
+        mentalEffects?.normal
+      )
   );
 }
 
 function buildTransformationNoteEmbed(transformation) {
+  const notes = transformation.transformationNotes;
+  const mentalEffects = notes?.mentalEffects;
+
   const embed = new EmbedBuilder()
     .setTitle("✨ Private Transformation Note")
     .addFields({
@@ -23,18 +29,18 @@ function buildTransformationNoteEmbed(transformation) {
     })
     .setTimestamp();
 
-  if (transformation.transformationNotes.physicalEffects) {
+  if (notes?.physicalEffects) {
     embed.addFields({
       name: "Physical Effects",
-      value: transformation.transformationNotes.physicalEffects,
+      value: notes.physicalEffects,
       inline: false,
     });
   }
 
-  if (transformation.transformationNotes.mentalEffects) {
+  if (mentalEffects?.normal) {
     embed.addFields({
       name: "Mental Effects",
-      value: transformation.transformationNotes.mentalEffects,
+      value: mentalEffects.normal,
       inline: false,
     });
   }

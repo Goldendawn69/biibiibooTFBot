@@ -5,7 +5,7 @@ A small, silly Discord transformation game bot built with Node.js and
 
 The bot lets Discord users opt into playful transformation commands. Registered
 users can transform themselves, transform other opted-in users, and check their
-current form. Transformation options are loaded from a local JSON file, and user
+current form. Transformation options are loaded from local JSON files, and user
 state is saved locally.
 
 ## Features
@@ -16,7 +16,7 @@ state is saved locally.
 - `/form` shows the user's current transformation form.
 - `/transform me` randomly transforms the command user.
 - `/transform user target:@user` randomly transforms another registered user.
-- Transformations are editable in `data/transformations.json`.
+- Transformations are editable in `data/transformations/`.
 - User registration and current-form state is stored in `data/users.json`.
 
 ## Project Structure
@@ -24,7 +24,10 @@ state is saved locally.
 ```text
 biibiibooTFBot/
   data/
-    transformations.json      Transformation entries used by the bot
+    transformations/
+      transformation-details.json  Public transformation entries used by the bot
+      physical-effects.json        Private physical effect notes by id
+      mental-effects.json          Private mental effect notes by id
     users.json                Runtime user state, generated locally
   src/
     commands/
@@ -115,8 +118,8 @@ The response is ephemeral.
 
 ### `/transform me`
 
-Transforms the command user into a random entry from
-`data/transformations.json`. The user must be registered first.
+Transforms the command user into a random entry from `data/transformations/`.
+The user must be registered first.
 
 The bot updates the user's `currentForm` and `lastTransformedAt`, saves the
 state, and posts the transformation text publicly in the channel.
@@ -131,28 +134,52 @@ the state, and posts the transformation text publicly in the channel.
 
 ## Transformation Data
 
-Transformations live in `data/transformations.json` as an array of objects:
+Transformations live in three files under `data/transformations/`.
+`transformation-details.json` contains the public fields used by transformation
+commands:
 
 ```json
 [
   {
     "id": "clockwork_dragon",
     "name": "Tiny Clockwork Dragon",
+    "categories": ["creature", "tiny", "fantasy", "robot"],
     "text": "{user} has been transformed into a tiny clockwork dragon. They are now making dramatic little steam noises."
   }
 ]
 ```
 
-Each transformation needs:
+Each transformation detail needs:
 
 - `id`: a stable identifier for the transformation.
 - `name`: the form saved into the user's `currentForm`.
+- `categories`: descriptive grouping tags for content organization.
 - `text`: the message posted when the transformation happens.
 
 Use `{user}` in `text` where the transformed user's Discord mention should
 appear.
 
-If the file is missing, empty, or contains an empty array, transformation
+Private physical transformation notes live in `physical-effects.json` as an
+object keyed by transformation `id`:
+
+```json
+{
+  "clockwork_dragon": "A bright little tick-tick-tick of excitement runs through you."
+}
+```
+
+Private mental transformation notes live in `mental-effects.json` as an object
+keyed by transformation `id`, with the default note in `normal`:
+
+```json
+{
+  "clockwork_dragon": {
+    "normal": "The mental pull is light and playful."
+  }
+}
+```
+
+If the details file is missing, empty, or contains an empty array, transformation
 commands will reply that no transformations are loaded.
 
 ## User State

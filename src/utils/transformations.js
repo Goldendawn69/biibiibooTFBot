@@ -1,26 +1,61 @@
 const fs = require("fs");
 const path = require("path");
 
-const transformationsFilePath = path.join(
+const transformationsDirectoryPath = path.join(
   __dirname,
   "..",
   "..",
   "data",
-  "transformations.json"
+  "transformations"
 );
 
-function loadTransformations() {
-  if (!fs.existsSync(transformationsFilePath)) {
-    return [];
+const transformationDetailsFilePath = path.join(
+  transformationsDirectoryPath,
+  "transformation-details.json"
+);
+const physicalEffectsFilePath = path.join(
+  transformationsDirectoryPath,
+  "physical-effects.json"
+);
+const mentalEffectsFilePath = path.join(
+  transformationsDirectoryPath,
+  "mental-effects.json"
+);
+
+function readJsonFile(filePath, fallbackValue) {
+  if (!fs.existsSync(filePath)) {
+    return fallbackValue;
   }
 
-  const rawData = fs.readFileSync(transformationsFilePath, "utf8");
+  const rawData = fs.readFileSync(filePath, "utf8");
 
   if (!rawData.trim()) {
-    return [];
+    return fallbackValue;
   }
 
   return JSON.parse(rawData);
+}
+
+function loadTransformations() {
+  const transformationDetails = readJsonFile(
+    transformationDetailsFilePath,
+    []
+  );
+
+  if (!Array.isArray(transformationDetails)) {
+    return [];
+  }
+
+  const physicalEffects = readJsonFile(physicalEffectsFilePath, {});
+  const mentalEffects = readJsonFile(mentalEffectsFilePath, {});
+
+  return transformationDetails.map((transformation) => ({
+    ...transformation,
+    transformationNotes: {
+      physicalEffects: physicalEffects[transformation.id],
+      mentalEffects: mentalEffects[transformation.id],
+    },
+  }));
 }
 
 function pickRandomItem(items) {

@@ -1,0 +1,313 @@
+[
+  {
+    "id": "clockwork_dragon",
+    "name": "Tiny Clockwork Dragon",
+    "categories": [
+      "creature",
+      "tiny",
+      "fantasy",
+      "robot"
+    ],
+    "text": "{user} has been transformed into a tiny clockwork dragon with polished brass plates, bright teal eyes framed by long lashes, and a cheerful little grin full of playful energy. A pink bow with a heart-shaped centre now sits between their curved horns, while a matching heart panel glows softly on their chest and warm copper wings fold neatly at their back. Little pipes around their head and shoulders let out adorable puffs of steam when they get excited, their curled mechanical tail twitches with clockwork precision, and they now clank, whirr, and pose with the confidence of a very cute steampunk princess."
+  },
+  {
+    "id": "haunted_teapot",
+    "name": "Haunted Teapot",
+    "categories": [
+      "object",
+      "spooky",
+      "magic"
+    ],
+    "text": "{user} is now a haunted porcelain teapot with elegant gold trim, glowing purple eyes, and a smug little painted smile that suggests they know exactly who forgot the biscuits. Their lid rattles whenever they are annoyed, ghostly steam curls from their spout, and tiny spirits drift around them like badly behaved tea-party guests. They now sit proudly among floating teacups and purple wisps, producing mysterious tea at inconvenient moments and judging everyone’s table manners with supernatural confidence."
+  },
+  {
+    "id": "glitter_goblin",
+    "name": "Glitter Goblin",
+    "categories": [
+      "creature",
+      "fantasy",
+      "magic"
+    ],
+    "text": "{user} has become a female glitter goblin with bright green skin, pointed ears, sparkling freckles, and wild teal-and-purple hair piled up with gems, stars, and tiny shiny treasures. Their outfit is a chaotic patchwork of glittery scraps, ribbons, sequins, jewels, and craft-shop trophies, all worn with far too much confidence. They now clutch a hoard of crystals, ribbons, beads, and mysterious limited-edition craft supplies, grinning like someone who absolutely knows where the good glitter is hidden and has no intention of sharing it."
+  },
+  {
+    "id": "boutique_mannequin",
+    "name": "Boutique Mannequin",
+    "categories": [
+      "mannequin",
+      "glamour"
+    ],
+    "text": "{user} has been transformed into a stylish boutique mannequin with smooth glossy skin, elegant painted features, and a permanently poised expression, with long pink hair. Their new outfit is a chic green dress with an autumn-orange scarf, a neat belt, gold jewellery, and the kind of display-window confidence that makes every pose look perfectly planned (which they probably are). They now stand with effortless grace, one hand lifted as if presenting the season’s collection, looking calm, fashionable, and just a little smug about it."
+  },
+  {
+    "id": "rubber_duck",
+    "name": "Suspicious Rubber Duck",
+    "categories": [
+      "animal",
+      "object",
+      "toy"
+    ],
+    "text": "{user} is now a suspicious rubber duck with a glossy yellow body, long lashes, a smug sideways glance, and a tiny golden crown perched proudly on their head. They bob in a mound of fluffy bath bubbles like they own the entire tub, looking every bit like bath-time royalty with a dramatic attitude to match. They now squeak at tense moments, splash daintily when offended, and give everyone the uneasy feeling that they are being silently judged by a very small but extremely self-important queen."
+  },
+  {
+    "id": "magical_maid",
+    "name": "Magical Maid",
+    "categories": [
+      "magic",
+      "job_role"
+    ],
+    "text": "{user} has been transformed into a cheerful magical maid with bright blue eyes, curled brown hair tied back with a big pink bow, and a frilly maid headband. Their outfit has become a black-and-white maid dress trimmed with pink ribbons, heart buttons, puffed sleeves, a neat apron, and sparkly little details that look far more magical than practical. A glowing feather duster floats nearby, pink cleaning magic swirls around them, and they now look very prepared to tidy chaos with dramatic flair, questionable efficiency, and an alarming amount of sparkle."
+  },
+  {
+    "id": "pocket_fairy",
+    "name": "Pocket Fairy",
+    "categories": [
+      "tiny",
+      "fantasy",
+      "magic"
+    ],
+    "text": "{user} has become a tiny female fairy with blonde hair, pointed ears, sparkling purple eyes, and a very serious sense of importance. Their pastel pink-and-lavender dress now glitters with tiny stars, their delicate wings shimmer with soft magical light, and a little tiara makes them look far more royal than their pocket-sized status should allow. They now flutter through the air in a swirl of sparkles, offering terrible advice in a sweet voice and sprinkling glitter over problems instead of solving them."
+  },
+  {
+    "id": "porcelain_princess",
+    "name": "Porcelain Princess",
+    "categories": [
+      "doll",
+      "object",
+      "fantasy"
+    ],
+    "text": "{user} has been transformed into a delicate porcelain princess figure with glossy pale ceramic skin, soft blue eyes, dark blue eye shadow, and full ruby-red painted lips set in a permanently graceful smile. Their white-blonde curls are arranged beneath a jeweled tiara, while blue-and-gold earrings and a matching choker complete the expensive shelf-display look. Their dress is carefully painted in soft white, blue, and pink porcelain patterns, with floral details, gold trim, puffed sleeves, and a decorative bodice that looks beautiful but far too fragile for ordinary life. They now move with refined poise, giving off the unsettling impression that they belong in a glass cabinet where people admire them, dust them carefully, and absolutely do not touch."
+  },
+  {
+    "id": "cat_cafe_girl",
+    "name": "Cat Café Girl",
+    "categories": [
+      "animal",
+      "job_role"
+    ],
+    "text": "{user} has become a cute cat café girl with soft cat ears, a swishy tail, bright curious eyes, and the cosy uniform of someone who absolutely should not be trusted near unattended pastries. They now move with cheerful feline confidence, balancing cups and saucers with surprising grace right up until something shiny catches their attention. They seem friendly enough, but their new urges to nap in sunny spots, bat teaspoons off tables, and judge customers from the windowsill may cause serious scheduling issues."
+  },
+  {
+    "id": "moonlit_witch",
+    "name": "Moonlit Witch",
+    "categories": [
+      "magic",
+      "fantasy",
+      "glamour"
+    ],
+    "text": "{user} has been turned into a moonlit witch with flowing auburn hair, bright green eyes, and a crooked purple hat marked with a golden crescent moon. Their outfit has become a star-speckled cloak over a more daring purple witch dress with gold trim, giving them the confident look of someone who knows exactly how much trouble they are allowed to cause. They now wave a glowing star wand while frogs, confetti, moonlight, and suspiciously orange soup appear around them, proving that their spells are mostly harmless but not remotely tidy."
+  },
+  {
+    "id": "living_plush_bunny",
+    "name": "Living Plush Bunny",
+    "categories": [
+      "animal",
+      "plushie",
+      "toy"
+    ],
+    "text": "{user} has become a living girly plush bunny with huge floppy stitched ears, soft cream plush fur, pink fluffy hair, bright blue eyes, and a tiny bunny nose that makes their serious expressions almost impossible to respect. Their outfit is a sweet pink dress with bows, buttons, frills, and little stitched details, as if someone designed them specifically to be displayed on the cutest shelf in the room. They are dangerously huggable, slightly wobbly, and now have an unfortunate habit of lifting their plush paws dramatically before falling over whenever they try to make an important point."
+  },
+  {
+    "id": "office_sorceress",
+    "name": "Office Sorceress",
+    "categories": [
+      "magic",
+      "job_role",
+      "glamour"
+    ],
+    "text": "{user} has been transformed into a glamorous office sorceress with a fitted deep-purple blazer, a sleek pencil skirt, sheer tights, glowing glasses, and a pen-wand sparkling with suspiciously corporate magic. Their golden hair is swept up into a bouncy ponytail, their star earrings and crescent necklace shimmer with enchantment, and their stylish blouse has just enough lace and flair to make every meeting feel slightly less lawful. Magical paperwork now spirals around them in glowing trails, paperclips orbit like tiny familiars, sticky notes hover obediently nearby, and the office printer has already started smoking in fear. They can summon reports, charm stationery, banish awkward meetings, and accidentally turn the monthly budget review into a minor supernatural incident."
+  },
+  {
+    "id": "bubble_mermaid",
+    "name": "Bubble Mermaid",
+    "categories": [
+      "creature",
+      "fantasy",
+      "glamour"
+    ],
+    "text": "{user} has become a bright, bubbly mermaid with pale shimmering skin, flowing blue and teal hair, emerald eyes, soft blue lips, and a starfish tucked sweetly into their curls. Their pretty purple shell top glitters with pearls, little jewels, and just enough ocean glamour to make the nearby fish stop and stare. They now drift through the water with graceful hand waves, a sparkling turquoise tail, pearl bracelets, shell earrings, and the absolute confidence of someone who has decided the entire reef is their personal palace. They sparkle faintly, pose dramatically in sunbeams, and keep trying to claim every puddle, bath, and suspiciously damp floor as part of their royal domain."
+  },
+  {
+    "id": "tin_robot_assistant",
+    "name": "Tin Robot Assistant",
+    "categories": [
+      "robot",
+      "job_role"
+    ],
+    "text": "{user} has been transformed into a cheerful tin robot assistant with a shiny silver body, bright teal eyes, rosy metal cheeks, and a little pink antenna blinking proudly on top of their head. Their new figure is all smooth curves, polished plating, and retro sci-fi glamour, with a narrow waist, rounded hips, soft feminine features, and a glowing pink heart panel set neatly into their chest. Their segmented arms move with polite clinks and whirrs, one shiny hand always raised in a friendly wave while the other rests on their hip with suspiciously confident charm. They now insist on announcing simple tasks as important scientific achievements, respond to compliments with delighted beeps, and keep trying to improve efficiency by looking adorable until someone else does the work."
+  },
+  {
+    "id": "garden_gnome_lady",
+    "name": "Garden Gnome Lady",
+    "categories": [
+      "creature",
+      "fantasy",
+      "plant"
+    ],
+    "text": "{user} has become a cheerful garden gnome lady with a tall red pointy hat, bouncy blonde hair, bright green eyes, rosy cheeks, and a daisy tucked proudly into their hat as if it were an official gardening badge. Their new outfit is a cosy green gnome dress with puffed sleeves, a lace-up bodice, a wide brown belt, red gloves, and a little cream apron that makes them look ready to judge every flowerbed in the neighbourhood. They now carry a shiny golden watering can decorated with flowers, which may or may not contain ordinary water, suspicious plant magic, or a stern liquid warning for badly behaved weeds. They feel personally responsible for every nearby plant, mushroom, leaf, and plastic fern, and will loudly complain about poor lawn care while sparkling as if the garden itself has reluctantly accepted them as management."
+  },
+  {
+    "id": "candyfloss_sprite",
+    "name": "Candyfloss Sprite",
+    "categories": [
+      "tiny",
+      "fantasy",
+      "food",
+      "magic"
+    ],
+    "text": "{user} has transformed into a candyfloss sprite with huge pastel pink and lavender hair, pointed little sprite ears, bright blue eyes, and a sweet cloud-soft outfit made from swirls of pink, blue, and fluffy sugar. Their candyfloss wings puff out behind them like sparkling spun-sugar clouds, soft enough to look edible but somehow still fluttering with magical mischief. They carry a candyfloss wand like royal proof of dessert authority, with lollipops, stars, sugar bubbles, and tiny sparkles drifting around them wherever they pose. They now smell faintly of strawberry sugar, leave glittery crumbs of magic behind when they move, and are legally considered a dessert in at least three imaginary kingdoms, two fairy courts, and one very confused bakery."
+  },
+  {
+    "id": "mini_dragon_librarian",
+    "name": "Mini Dragon Librarian",
+    "categories": [
+      "creature",
+      "tiny",
+      "fantasy",
+      "job_role"
+    ],
+    "text": "{user} has become a tiny female humanoid-dragon librarian with curled horns, pointed ears, rosy scales, little round spectacles, and the severe expression of someone who has personally alphabetised a volcano. Their purple hair is neatly pinned back with a bow, their smart cardigan and blouse make them look painfully official, and their small wings, curled tail, and warm smoky breath make it very clear that overdue books are now a fire-risk situation. They clutch a stack of precious library books with fierce little claws, surrounded by scrolls, ink pots, floating spectacles, and suspiciously magical reference materials. They guard every shelf with surprising intensity, breathe warm smoke when annoyed, and hiss softly at anyone who folds page corners, speaks too loudly, or dares to shelve a romance novel under history."
+  },
+  {
+    "id": "enchanted_doll",
+    "name": "Enchanted Doll",
+    "categories": [
+      "doll",
+      "toy",
+      "magic"
+    ],
+    "text": "{user} has been transformed into an enchanted doll with glossy blue doll eyes, painted rosy cheeks, neat little doll lashes, and perfectly curled brown hair tied up with an enormous red bow. Their outfit has become a sweet blue party dress with puffed sleeves, crisp white frills, a red ribbon at the collar, and a frilly white apron that makes them look permanently ready for an impossibly polite tea party. Their arms now have delicate wooden toy joints, their hands lift their skirt in a carefully posed curtsy, and their smile is bright, painted, and just a little too perfect. Every movement comes with a faint click of enchanted hinges, every pose looks arranged by unseen magic, and they now have the worrying urge to sit very still on a shelf whenever anyone says they look cute."
+  },
+  {
+    "id": "rainbow_slime_girl",
+    "name": "Rainbow Slime Girl",
+    "categories": [
+      "creature",
+      "fantasy"
+    ],
+    "text": "{user} has become a rainbow slime girl with glossy, dripping rainbow hair, bright cheerful eyes, and a body made from colourful, translucent goo that catches the light like magical jelly. Their outfit has melted into a cute slime dress with wobbly rainbow frills, shiny drips, and soft squishy edges that never quite hold the same shape twice. They now wave with a stretchy hand, leave tiny sparkling slime droplets behind when they move, and bounce slightly whenever surprised, excited, or mildly poked. They are colourful, squishy, almost impossible to intimidate, and should probably be kept away from carpet, paperwork, and any snacks left unattended for more than three seconds."
+  },
+  {
+    "id": "starry_stage_magician",
+    "name": "Starry Stage Magician",
+    "categories": [
+      "magic",
+      "job_role",
+      "glamour"
+    ],
+    "text": "{user} has been transformed into a starry stage magician with a sparkling cape and a dramatic top hat. Every gesture now produces unnecessary glitter, and their magic mostly consists of making small objects vanish into places nobody checked."
+  },
+  {
+    "id": "tea_party_hostess",
+    "name": "Tea Party Hostess",
+    "categories": [
+      "job_role",
+      "glamour"
+    ],
+    "text": "{user} has been transformed into a fancy tea party hostess with bright eyes, curled brown hair, and a flower-trimmed hat tied with a soft pink bow. Their outfit has become a frilly pink dress with puffed sleeves, white ruffles, a neat apron, and delicate gloves perfect for handling fragile china. They now balance a floral teacup and matching teapot with effortless cheer, ready to host an extremely proper tea party whether anyone asked for one or not."
+  },
+  {
+    "id": "clocktower_ghost_girl",
+    "name": "Clocktower Ghost Girl",
+    "categories": [
+      "spooky",
+      "fantasy",
+      "magic"
+    ],
+    "text": "{user} has turned into a friendly clocktower ghost girl with a soft blue glow, misty flowing hair, pale violet skin, and an outfit that fades into wisps of haunted clockwork fog. Their ruffled blouse, striped bodice, dark skirt, and little gear brooch make them look like they drifted straight out of a very polite supernatural timepiece. A tiny pocket watch and bell now hang from their waist, chiming gently whenever they float too close to the hour, while ghostly clock hands, gears, bells, and old clock faces shimmer around them. They can glide through walls, wave cheerfully at startled people, and insist they are technically being spooky, even when they mostly just look elegant, glowy, and mildly lost between appointments."
+  },
+  {
+    "id": "ballerina_music_box",
+    "name": "Ballerina Music Box",
+    "categories": [
+      "doll",
+      "object",
+      "toy",
+      "tiny"
+    ],
+    "text": "{user} has been transformed into a tiny ballerina from a music box. When the magic winds up, they twirl gracefully to a gentle tune, although they look mildly annoyed whenever someone asks if they know any other songs."
+  },
+  {
+    "id": "lady_knight_mouse",
+    "name": "Lady Knight Mouse",
+    "categories": [
+      "animal",
+      "tiny",
+      "fantasy"
+    ],
+    "text": "{user} has become a tiny lady knight mouse with a thimble helmet and a heroic little cape. They are extremely brave, very squeaky, and prepared to defend the realm from crumbs, cats, and suspiciously large biscuits."
+  },
+  {
+    "id": "crystal_fairy_queen",
+    "name": "Crystal Fairy Queen",
+    "categories": [
+      "tiny",
+      "fantasy",
+      "magic",
+      "glamour"
+    ],
+    "text": "{user} has been transformed into a tiny crystal fairy queen. Their wings glitter like stained glass, their crown is far too dramatic for their size, and they now demand royal respect from anyone taller than a mug."
+  },
+  {
+    "id": "pumpkin_girl",
+    "name": "Pumpkin Girl",
+    "categories": [
+      "plant",
+      "food",
+      "fantasy"
+    ],
+    "text": "{user} has been transformed into a cheerful pumpkin girl with warm orange skin, golden eyes, and wild leafy green hair topped with a little pumpkin stem and curling vines. Her outfit has become a bright pumpkin-petal dress with autumn leaves around the collar and waist, while a green vine curls around her wrist like a playful bracelet. She now smells faintly of cinnamon and fallen leaves, keeps scattering tiny seed-shaped sparkles when she moves, and seems very pleased with her new seasonal charm."
+  },
+  {
+    "id": "velvet_lounge_siren",
+    "name": "Velvet Lounge Siren",
+    "categories": [
+      "glamour",
+      "job_role"
+    ],
+    "text": "{user} has been transformed into a glamorous velvet lounge siren with warm tanned skin, big expressive eyes, and long dark waves styled with a deep red rose and feathered hairpiece. Their outfit has become a rich burgundy evening gown with a sweetheart neckline, a high slit, and matching opera gloves, finished with ruby jewellery that catches the low golden light. They now hold a vintage microphone in one hand and a cocktail in the other, looking perfectly at home in a late-night jazz lounge, where every smile, pose, and sideways glance feels smooth, confident, and just a little teasing."
+  },
+  {
+    "id": "moonlit_vampire_lady",
+    "name": "Moonlit Vampire Lady",
+    "categories": [
+      "spooky",
+      "fantasy",
+      "glamour"
+    ],
+    "text": "{user} has been transformed into a moonlit vampire lady with soft pale skin, large bright eyes, and glossy dark hair styled in a cute retro wave. Their outfit has become an elegant gothic dress in deep black and crimson tones, with a dramatic collar, delicate lace details, and ruby jewellery that glints in the moonlight. They now wear a sweet but slightly mischievous smile, looking more charming than terrifying, with all the polished spooky glamour of a stylish midnight hostess from a vintage comic world."
+  },
+  {
+    "id": "cabaret_catwoman",
+    "name": "Cabaret Catwoman",
+    "categories": [
+      "animal",
+      "glamour",
+      "job_role"
+    ],
+    "text": "{user} has been transformed into a glamorous cabaret catwoman with golden-blonde curls, matching cat ears, a swaying blonde tail, and sharp purple eyes lined with dramatic stage makeup. Their outfit has become a sparkling black-and-purple cabaret costume with long opera gloves, glittering trim, a tiny top hat with a feather, gold jewellery, and a rose-and-chain detail at the hip. They now move with feline poise and showgirl confidence, tipping their hat with a knowing smile as if they have several secrets, at least two escape routes, and absolutely no intention of why she knows of either."
+  },
+  {
+    "id": "rose_court_enchantress",
+    "name": "Rose Court Enchantress",
+    "categories": [
+      "magic",
+      "fantasy",
+      "plant",
+      "glamour"
+    ],
+    "text": "{user} has become a rose court enchantress with long flowing auburn hair, bright green eyes, and a confident smile that looks equal parts welcoming and dangerous. Their outfit has become a rich burgundy gown with a fitted corset bodice, layered rose-petal skirts, thorny vine details, and deep crimson roses blooming across the dress, jewellery, and crown. Thorn-wrapped bracelets curl around their arms, loose petals drift around them, and one graceful hand is always lifted as if they are calmly summoning beauty, trouble, or both at once."
+  },
+  {
+    "id": "neon_demon_hostess",
+    "name": "Neon Demon Hostess",
+    "categories": [
+      "creature",
+      "spooky",
+      "fantasy",
+      "glamour",
+      "job_role"
+    ],
+    "text": "{user} has been transformed into a neon demon hostess with small polished horns, glowing eyes, a wicked smile, and a sleek black-and-purple outfit suited to a very questionable nightclub. Their tail flicks whenever they are amused, which is often, and their voice now has the warm confidence of someone offering a deal they definitely expect to win. They are not exactly evil, but they are absolutely the reason the evening now has terms and conditions."
+  }
+]
