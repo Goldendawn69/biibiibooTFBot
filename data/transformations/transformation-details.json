@@ -315,8 +315,7 @@
     "name": "Velvet Fetish Doll",
     "categories": [
       "doll",
-      "toy",
-      "tactile"
+      "toy"
     ],
     "text": "{user} has been transformed into a living crimson velvet doll with plush red skin, glossy black curls, painted doll-like features, and neat stitched seams tracing their soft fabric body. Their outfit has become a polished black-and-red doll corset with shiny latex gloves, delicate straps, bows, buckles, and ruffled details that hold them in an elegant display pose. Every movement brings a soft rustle of velvet and a faint creak of glossy trim, while their sweet little smile suggests they are perfectly happy being admired as the most carefully posed doll in the room."
   },
@@ -324,28 +323,20 @@
     "id": "honey_nymph",
     "name": "Honeyed Nectar Nymph",
     "categories": [
-      "creature",
-      "sensory",
-      "sweet"
+      "creature"
     ],
     "text": "{user} has been transformed into a honeyed nectar nymph, their body glowing like liquid amber with glossy golden skin, syrupy hair, and little droplets of honey trailing from every graceful gesture. Their outfit has become a translucent flower-petal dress with honeycomb details and bright daisy blooms, while cheerful bees and golden sparkles drift lazily around them. They now move with slow, sticky elegance, smell faintly of wildflowers and warm sugar, and seem happiest whenever they can bask in sunlight like a very smug jar of magical honey."
   },
   {
     "id": "leather_biker_rogue",
     "name": "Leather Biker Rogue",
-    "categories": [
-      "tough",
-      "rebellious",
-      "tactile"
-    ],
+    "categories": [],
     "text": "{user} has been transformed into a leather biker rogue with wild black hair, a bold pale streak, hoop earrings, a studded choker, and a smile that says they know exactly how much trouble they are causing. Their outfit has become a fitted black leather jacket, glossy corset top, fingerless gloves, chained belt, and road-worn biker gear, all smelling faintly of oil, smoke, and polished hide. They now lean against their motorcycle with effortless swagger, ready to turn every exit into a dramatic getaway."
   },
   {
     "id": "gilded_goddess",
     "name": "Gilded Statuesque Goddess",
     "categories": [
-      "opulence",
-      "metallic",
       "glamour"
     ],
     "text": "{user} has been transformed into a gilded statuesque goddess with cool white marble skin, faint stone veining, reflective highlights, and bright golden eyes. Their hair has become flowing liquid gold, their lips and eyeshadow gleam with metallic shine, and their jewellery forms elegant golden bands, chains, earrings, and a delicate headpiece. Draped in a glossy liquid-gold gown, they move with slow, regal confidence, looking like an ancient marble statue brought beautifully and dangerously back to life."
@@ -353,18 +344,13 @@
   {
     "id": "satin_sleepwear_spirit",
     "name": "Satin Sleepwear Spirit",
-    "categories": [
-      "dreamy",
-      "intimate",
-      "soft"
-    ],
+    "categories": [],
     "text": "{user} has become a misty satin sleepwear spirit with moonlit lavender skin, flowing cloud-soft hair, and a glossy nightgown that drifts around them like sleepy starlight. Their form seems light as mist, wrapped in ribbons of dream-clouds, soft lace, and gentle moon glow. They now float through the night with a graceful sway, leaving behind sparkles, sleepy sweetness, and the strange feeling that someone has just wandered into a very pretty dream."
   },
   {
     "id": "latex_android",
     "name": "Midnight Latex Android",
     "categories": [
-      "sci_fi",
       "robot",
       "glamour"
     ],
@@ -375,7 +361,6 @@
     "name": "Forest Nymph",
     "categories": [
       "creature",
-      "nature",
       "fantasy"
     ],
     "text": "{user} has been transformed into a radiant forest nymph with soft green skin, flowing dark emerald hair, pointed ears, and blossoms tucked through every curl. Their outfit has become a delicate weave of living leaves, curling vines, and bright wildflowers, all shifting gently as if the forest itself is dressing them. Butterflies, petals, and golden sparkles drift around them wherever they move, leaving the scent of fresh leaves, damp earth, and blooming woodland flowers in their wake."

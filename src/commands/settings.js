@@ -20,6 +20,8 @@ const {
 
 const SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID = "settings:mental-effects-min";
 const SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID = "settings:mental-effects-max";
+const SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID =
+  "settings:transformation-notes";
 
 function buildSettingsContent(user) {
   const notesStatus = user.transformationNotesEnabled ? "Enabled" : "Disabled";
@@ -35,7 +37,12 @@ function buildSettingsContent(user) {
   ].join("\n");
 }
 
-function buildMentalEffectsSelect(customId, placeholder, selectedLevel) {
+function buildMentalEffectsSelect(
+  customId,
+  placeholder,
+  selectedLevel,
+  selectedLabelPrefix
+) {
   const normalizedSelectedLevel = normalizeMentalEffectLevel(selectedLevel);
 
   return new StringSelectMenuBuilder()
@@ -43,11 +50,33 @@ function buildMentalEffectsSelect(customId, placeholder, selectedLevel) {
     .setPlaceholder(placeholder)
     .addOptions(
       MENTAL_EFFECT_OPTIONS.map((option) => ({
-        label: option.label,
+        label: `${selectedLabelPrefix}: ${option.label}`,
         value: option.value,
         description: option.description,
         default: option.value === normalizedSelectedLevel,
       }))
+    );
+}
+
+function buildTransformationNotesSelect(user) {
+  const notesEnabled = Boolean(user.transformationNotesEnabled);
+
+  return new StringSelectMenuBuilder()
+    .setCustomId(SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID)
+    .setPlaceholder("Choose whether Transformation Notes are sent")
+    .addOptions(
+      {
+        label: "Notes: Enabled",
+        value: "on",
+        description: "DM me private physical and mental transformation notes.",
+        default: notesEnabled,
+      },
+      {
+        label: "Notes: Disabled",
+        value: "off",
+        description: "Do not send private transformation note DMs.",
+        default: !notesEnabled,
+      }
     );
 }
 
@@ -57,17 +86,22 @@ function buildSettingsPanel(user, { ephemeral = true } = {}) {
     content: buildSettingsContent(user),
     components: [
       new ActionRowBuilder().addComponents(
+        buildTransformationNotesSelect(user)
+      ),
+      new ActionRowBuilder().addComponents(
         buildMentalEffectsSelect(
           SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID,
           "Choose your minimum Mental Effects level",
-          mentalEffectsRange.minLevel
+          mentalEffectsRange.minLevel,
+          "Minimum"
         )
       ),
       new ActionRowBuilder().addComponents(
         buildMentalEffectsSelect(
           SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID,
           "Choose your maximum Mental Effects level",
-          mentalEffectsRange.maxLevel
+          mentalEffectsRange.maxLevel,
+          "Maximum"
         )
       ),
     ],
@@ -103,11 +137,16 @@ async function handleSettings(interaction) {
   await interaction.reply(buildSettingsPanel(user));
 }
 
+function isSettingsSelectMenu(customId) {
+  return [
+    SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID,
+    SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID,
+    SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID,
+  ].includes(customId);
+}
+
 async function handleSettingsSelectMenu(interaction) {
-  if (
-    interaction.customId !== SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID &&
-    interaction.customId !== SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID
-  ) {
+  if (!isSettingsSelectMenu(interaction.customId)) {
     return false;
   }
 
@@ -120,6 +159,24 @@ async function handleSettingsSelectMenu(interaction) {
         "You are not registered yet. Use `/register` first if you want to change settings.",
       flags: MessageFlags.Ephemeral,
     });
+    return true;
+  }
+
+  if (interaction.customId === SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID) {
+    user.transformationNotesEnabled = interaction.values[0] === "on";
+    saveUsers(users);
+
+    const notesStatus = user.transformationNotesEnabled
+      ? "enabled"
+      : "disabled";
+
+    await interaction.update(
+      buildSettingsUpdatePanel(
+        user,
+        `Saved Transformation Notes: **${notesStatus}**`
+      )
+    );
+
     return true;
   }
 
@@ -150,6 +207,7 @@ async function handleSettingsSelectMenu(interaction) {
 module.exports = {
   SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID,
   SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID,
+  SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID,
   buildSettingsPanel,
   handleSettings,
   handleSettingsSelectMenu,

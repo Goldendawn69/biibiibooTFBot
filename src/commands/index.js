@@ -12,6 +12,7 @@ const {
   handleSettingsSelectMenu,
   SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID,
   SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID,
+  SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID,
 } = require("./settings");
 
 const commandHandlers = {
@@ -30,6 +31,7 @@ const commandHandlers = {
 const selectMenuHandlers = {
   [SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID]: handleSettingsSelectMenu,
   [SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID]: handleSettingsSelectMenu,
+  [SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID]: handleSettingsSelectMenu,
 };
 
 module.exports = {
