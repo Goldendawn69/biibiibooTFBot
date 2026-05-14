@@ -13,6 +13,24 @@ client.once("clientReady", () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
+function formatInteractionUser(user) {
+  return user?.tag ? `${user.tag} (${user.id})` : user?.id || "unknown user";
+}
+
+function formatInteractionLocation(interaction) {
+  const parts = [];
+
+  if (interaction.guildId) {
+    parts.push(`guild ${interaction.guildId}`);
+  }
+
+  if (interaction.channelId) {
+    parts.push(`channel ${interaction.channelId}`);
+  }
+
+  return parts.length ? parts.join(", ") : "DM or unknown location";
+}
+
 client.on("interactionCreate", async (interaction) => {
   if (interaction.isStringSelectMenu()) {
     const handler = selectMenuHandlers[interaction.customId];
@@ -33,7 +51,11 @@ client.on("interactionCreate", async (interaction) => {
     return;
   }
 
-  console.log(`Command received: ${interaction.commandName}`);
+  console.log(
+    `Command received: /${interaction.commandName} from ${formatInteractionUser(
+      interaction.user
+    )} in ${formatInteractionLocation(interaction)}`
+  );
 
   const handler = commandHandlers[interaction.commandName];
 

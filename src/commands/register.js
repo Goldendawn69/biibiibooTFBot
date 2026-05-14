@@ -24,6 +24,7 @@ async function handleRegister(interaction) {
     currentForm: null,
     currentTransformationId: null,
     transformationNotesEnabled: false,
+    blockedTransformationCategories: [],
     mentalEffectsMinLevel: defaultMentalEffectsRange.minLevel,
     mentalEffectsMaxLevel: defaultMentalEffectsRange.maxLevel,
     registeredAt: new Date().toISOString(),

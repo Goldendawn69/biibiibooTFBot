@@ -18,9 +18,12 @@ to receive.
 - `/randomtransform` chooses one registered user at random.
 - `/form` gives a quick private current-form check.
 - `/whatami` sends richer current-form details to the user's DMs.
+- `/listtransformations` lists the loaded transformations and image links, or
+  shows one transformation picture by id.
 - `/resetform` clears a user's current form while keeping them registered.
-- `/settings` lets users manage Transformation Notes and choose their Mental
-  Effects range with Discord select menus.
+- `/settings` lets users manage Transformation Notes, choose their Mental
+  Effects range, and opt out of transformation categories with Discord select
+  menus.
 - Command cooldowns and optional channel restriction for game commands.
 - Transformation data validation with `npm run validate-data`.
 - User registration, settings, and current-form state are stored locally in
@@ -44,6 +47,7 @@ biibiibooTFBot/
     commands/
       bbhelp.js                    Handles /bbhelp
       form.js                      Handles /form
+      listtransformations.js       Handles /listtransformations
       randomtransform.js           Handles /randomtransform
       register.js                  Handles /register
       resetform.js                 Handles /resetform
@@ -126,14 +130,16 @@ logged in as.
 ## User Flow
 
 1. A user runs `/register` to opt in.
-2. They can use `/settings` to enable private Transformation Notes and choose
-   their Mental Effects range.
+2. They can use `/settings` to enable private Transformation Notes, choose
+   their Mental Effects range, and block transformation categories they do not
+   want.
 3. They can transform themselves with `/transform me`, be transformed by another
    user with `/transform user target:@user`, or be selected by
    `/randomtransform`.
-4. They can check their saved form with `/form` or get richer DM details with
+4. They can browse available transformation IDs with `/listtransformations`.
+5. They can check their saved form with `/form` or get richer DM details with
    `/whatami`.
-5. They can clear their current form with `/resetform` or fully opt out with
+6. They can clear their current form with `/resetform` or fully opt out with
    `/unregister`.
 
 The bot keeps consent simple: users must be registered before another user or
@@ -150,6 +156,7 @@ their local user record with:
 - `currentForm: null`
 - `currentTransformationId: null`
 - `transformationNotesEnabled: false`
+- `blockedTransformationCategories: []`
 - `mentalEffectsMinLevel` and `mentalEffectsMaxLevel`, defaulting to `normal`
 - `registeredAt`, as an ISO timestamp
 
@@ -175,6 +182,8 @@ The panel currently shows:
 
 - Transformation Notes status: enabled or disabled.
 - Mental Effects Range: the user's minimum and maximum mental-effect tiers.
+- Blocked Categories, only shown when the user has opted out of at least one
+  category.
 
 The Transformation Notes select menu lets the user enable or disable private
 note DMs from the same panel.
@@ -183,6 +192,12 @@ The Mental Effects select menus let the user choose their minimum and maximum
 Mental Effects levels. If the selected minimum is higher than the current
 maximum, or the selected maximum is lower than the current minimum, the bot
 collapses the range to the selected value so the saved range is always valid.
+
+The Blocked Categories multi-select lets the user opt out of specific
+transformation categories. Leaving every category unselected means no categories
+are blocked. Any transformation with a blocked category is excluded when that
+user is the target, including `/transform me`, `/transform user`, and
+`/randomtransform`.
 
 Available Mental Effects levels are:
 
@@ -215,6 +230,22 @@ embed includes:
 - the matching transformation image, if one exists in `assets/transformations/`.
 
 If the user's DMs are closed, the bot replies ephemerally to say the DM failed.
+
+### `/listtransformations`
+
+Privately lists every loaded transformation by display name and transformation
+ID. When hosted image URLs are configured, each row also includes a full-picture
+link.
+
+Optional argument:
+
+- `id`: shows one transformation on its own by exact transformation ID, such as
+  `clockwork_dragon`.
+
+The ID lookup keeps the response minimal: it shows the transformation name, the
+ID, and the artwork. If hosted image URLs are not configured but a local PNG
+exists in `assets/transformations/`, the bot attaches that image for the ID
+lookup.
 
 ### `/resetform`
 
@@ -266,22 +297,14 @@ choices for the optional `category` argument on `/transform me` and
 Current allowed category values:
 
 ```text
-animal
-creature
-tiny
-doll
-mannequin
+animalmorph
+fantasy_creature
+human
 object
 toy
-plushie
-robot
-magic
-fantasy
-spooky
-glamour
-food
+machine
 plant
-job_role
+supernatural
 ```
 
 Keep `transformation-details.json` categories limited to this list. The category
@@ -298,7 +321,7 @@ commands:
   {
     "id": "clockwork_dragon",
     "name": "Tiny Clockwork Dragon",
-    "categories": ["creature", "tiny", "fantasy", "robot"],
+    "categories": ["fantasy_creature", "machine"],
     "text": "{user} has been transformed into a tiny clockwork dragon. They are now making dramatic little steam noises."
   }
 ]
@@ -399,6 +422,7 @@ data is otherwise loaded. Example shape:
     "currentForm": "Tiny Clockwork Dragon",
     "currentTransformationId": "clockwork_dragon",
     "transformationNotesEnabled": true,
+    "blockedTransformationCategories": ["supernatural", "human"],
     "mentalEffectsMinLevel": "mild",
     "mentalEffectsMaxLevel": "strong",
     "registeredAt": "2026-05-12T09:00:00.000Z",
@@ -409,7 +433,8 @@ data is otherwise loaded. Example shape:
 
 Older user records with `mentalEffectsLevel` are still normalised by the user
 helpers. New settings writes save `mentalEffectsMinLevel` and
-`mentalEffectsMaxLevel` instead.
+`mentalEffectsMaxLevel` instead. Blocked category settings are saved in
+`blockedTransformationCategories`.
 
 ## Environment Variables
 

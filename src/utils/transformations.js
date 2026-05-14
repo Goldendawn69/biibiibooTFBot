@@ -1,5 +1,8 @@
 const fs = require("fs");
 const path = require("path");
+const {
+  getUserBlockedTransformationCategories,
+} = require("./users");
 
 const transformationsDirectoryPath = path.join(
   __dirname,
@@ -62,6 +65,38 @@ function pickRandomItem(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
+function hasBlockedCategory(transformation, blockedCategories) {
+  if (!Array.isArray(transformation.categories)) {
+    return false;
+  }
+
+  return transformation.categories.some((category) =>
+    blockedCategories.includes(category)
+  );
+}
+
+function getAllowedTransformationsForUser(
+  transformations,
+  user,
+  { category } = {}
+) {
+  const blockedCategories = getUserBlockedTransformationCategories(user);
+
+  return transformations.filter((transformation) => {
+    if (
+      category &&
+      (
+        !Array.isArray(transformation.categories) ||
+        !transformation.categories.includes(category)
+      )
+    ) {
+      return false;
+    }
+
+    return !hasBlockedCategory(transformation, blockedCategories);
+  });
+}
+
 function findTransformationForUser(transformations, user) {
   if (user.currentTransformationId) {
     const transformationById = transformations.find(
@@ -83,6 +118,7 @@ function findTransformationForUser(transformations, user) {
 }
 
 module.exports = {
+  getAllowedTransformationsForUser,
   loadTransformations,
   pickRandomItem,
   findTransformationForUser,

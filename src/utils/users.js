@@ -6,6 +6,9 @@ const {
   normalizeMentalEffectLevel,
   pickRandomMentalEffectLevel,
 } = require("./mentalEffects");
+const {
+  VALID_TRANSFORMATION_CATEGORY_VALUES,
+} = require("./transformationCategories");
 
 const usersFilePath = path.join(__dirname, "..", "..", "data", "users.json");
 const usersDirectoryPath = path.dirname(usersFilePath);
@@ -35,6 +38,48 @@ function loadUsers() {
 function saveUsers(users) {
   ensureUsersFileExists();
   fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), "utf8");
+}
+
+function normalizeBlockedTransformationCategories(categories) {
+  if (!Array.isArray(categories)) {
+    return [];
+  }
+
+  const legacyCategoryMap = {
+    animal: "animalmorph",
+    creature: "fantasy_creature",
+    doll: "toy",
+    doll_toy: "toy",
+    mannequin: "toy",
+    plushie: "toy",
+    robot: "machine",
+    food: "plant",
+    plant_food: "plant",
+    spooky: "supernatural",
+  };
+
+  return [
+    ...new Set(
+      categories
+        .map((category) => legacyCategoryMap[category] || category)
+        .filter((category) =>
+          VALID_TRANSFORMATION_CATEGORY_VALUES.includes(category)
+        )
+    ),
+  ];
+}
+
+function getUserBlockedTransformationCategories(user) {
+  return normalizeBlockedTransformationCategories(
+    user?.blockedTransformationCategories
+  );
+}
+
+function setUserBlockedTransformationCategories(user, categories) {
+  user.blockedTransformationCategories =
+    normalizeBlockedTransformationCategories(categories);
+
+  return user.blockedTransformationCategories;
 }
 
 function getUserMentalEffectsLevel(user) {
@@ -115,11 +160,14 @@ function pickUserMentalEffectsLevel(user) {
 }
 
 module.exports = {
+  getUserBlockedTransformationCategories,
   getUserMentalEffectsLevel,
   getUserMentalEffectsRange,
   loadUsers,
+  normalizeBlockedTransformationCategories,
   pickUserMentalEffectsLevel,
   saveUsers,
+  setUserBlockedTransformationCategories,
   setUserMentalEffectsLevel,
   setUserMentalEffectsMaxLevel,
   setUserMentalEffectsMinLevel,

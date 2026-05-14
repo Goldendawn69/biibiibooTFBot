@@ -7,13 +7,18 @@ const {
   MENTAL_EFFECT_OPTIONS,
 } = require("../config/settings");
 const {
+  TRANSFORMATION_CATEGORIES,
+} = require("../utils/transformationCategories");
+const {
   getMentalEffectLevelLabel,
   normalizeMentalEffectLevel,
 } = require("../utils/mentalEffects");
 const {
+  getUserBlockedTransformationCategories,
   getUserMentalEffectsRange,
   loadUsers,
   saveUsers,
+  setUserBlockedTransformationCategories,
   setUserMentalEffectsMaxLevel,
   setUserMentalEffectsMinLevel,
 } = require("../utils/users");
@@ -22,19 +27,38 @@ const SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID = "settings:mental-effects-min";
 const SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID = "settings:mental-effects-max";
 const SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID =
   "settings:transformation-notes";
+const SETTINGS_BLOCKED_CATEGORIES_CUSTOM_ID = "settings:blocked-categories";
+
+function formatCategoryName(category) {
+  const matchingCategory = TRANSFORMATION_CATEGORIES.find(
+    (transformationCategory) => transformationCategory.value === category
+  );
+
+  return matchingCategory ? matchingCategory.name : category;
+}
 
 function buildSettingsContent(user) {
   const notesStatus = user.transformationNotesEnabled ? "Enabled" : "Disabled";
   const mentalEffectsRange = getUserMentalEffectsRange(user);
   const minLabel = getMentalEffectLevelLabel(mentalEffectsRange.minLevel);
   const maxLabel = getMentalEffectLevelLabel(mentalEffectsRange.maxLevel);
-
-  return [
+  const blockedCategories = getUserBlockedTransformationCategories(user);
+  const lines = [
     "**BiiBiiBoo Settings**",
     "",
     `Transformation Notes: **${notesStatus}**`,
     `Mental Effects Range: **${minLabel}** to **${maxLabel}**`,
-  ].join("\n");
+  ];
+
+  if (blockedCategories.length) {
+    lines.push(
+      `Blocked Categories: **${blockedCategories
+        .map(formatCategoryName)
+        .join(", ")}**`
+    );
+  }
+
+  return lines.join("\n");
 }
 
 function buildMentalEffectsSelect(
@@ -80,6 +104,24 @@ function buildTransformationNotesSelect(user) {
     );
 }
 
+function buildBlockedCategoriesSelect(user) {
+  const blockedCategories = getUserBlockedTransformationCategories(user);
+
+  return new StringSelectMenuBuilder()
+    .setCustomId(SETTINGS_BLOCKED_CATEGORIES_CUSTOM_ID)
+    .setPlaceholder("Choose transformation categories to opt out of")
+    .setMinValues(0)
+    .setMaxValues(TRANSFORMATION_CATEGORIES.length)
+    .addOptions(
+      TRANSFORMATION_CATEGORIES.map((category) => ({
+        label: `Block: ${category.name}`,
+        value: category.value,
+        description: `Do not transform me into ${category.name} results.`,
+        default: blockedCategories.includes(category.value),
+      }))
+    );
+}
+
 function buildSettingsPanel(user, { ephemeral = true } = {}) {
   const mentalEffectsRange = getUserMentalEffectsRange(user);
   const panel = {
@@ -103,6 +145,9 @@ function buildSettingsPanel(user, { ephemeral = true } = {}) {
           mentalEffectsRange.maxLevel,
           "Maximum"
         )
+      ),
+      new ActionRowBuilder().addComponents(
+        buildBlockedCategoriesSelect(user)
       ),
     ],
   };
@@ -142,6 +187,7 @@ function isSettingsSelectMenu(customId) {
     SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID,
     SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID,
     SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID,
+    SETTINGS_BLOCKED_CATEGORIES_CUSTOM_ID,
   ].includes(customId);
 }
 
@@ -180,6 +226,28 @@ async function handleSettingsSelectMenu(interaction) {
     return true;
   }
 
+  if (interaction.customId === SETTINGS_BLOCKED_CATEGORIES_CUSTOM_ID) {
+    const blockedCategories = setUserBlockedTransformationCategories(
+      user,
+      interaction.values
+    );
+
+    saveUsers(users);
+
+    await interaction.update(
+      buildSettingsUpdatePanel(
+        user,
+        blockedCategories.length
+          ? `Saved blocked categories: **${blockedCategories
+              .map(formatCategoryName)
+              .join(", ")}**`
+          : "Cleared blocked categories."
+      )
+    );
+
+    return true;
+  }
+
   const selectedLevel = normalizeMentalEffectLevel(interaction.values[0]);
 
   if (interaction.customId === SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID) {
@@ -205,6 +273,7 @@ async function handleSettingsSelectMenu(interaction) {
 }
 
 module.exports = {
+  SETTINGS_BLOCKED_CATEGORIES_CUSTOM_ID,
   SETTINGS_MENTAL_EFFECTS_MAX_CUSTOM_ID,
   SETTINGS_MENTAL_EFFECTS_MIN_CUSTOM_ID,
   SETTINGS_TRANSFORMATION_NOTES_CUSTOM_ID,

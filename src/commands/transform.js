@@ -5,6 +5,7 @@ const {
   saveUsers,
 } = require("../utils/users");
 const {
+  getAllowedTransformationsForUser,
   loadTransformations,
   pickRandomItem,
 } = require("../utils/transformations");
@@ -13,27 +14,44 @@ const { sendTransformationNote } = require("../utils/transformationNotes");
 
 function applyRandomTransformation(users, userId, category) {
   const transformations = loadTransformations();
+  const user = users[userId];
 
-  const matchingTransformations = category
-    ? transformations.filter((transformation) =>
-        Array.isArray(transformation.categories) &&
-        transformation.categories.includes(category)
+  if (transformations.length === 0) {
+    return {
+      ok: false,
+      message:
+        "There are no transformations loaded yet.\nThe magic cupboard is sadly empty.",
+    };
+  }
+
+  const categoryTransformations = category
+    ? transformations.filter(
+        (transformation) =>
+          Array.isArray(transformation.categories) &&
+          transformation.categories.includes(category)
       )
     : transformations;
+
+  const matchingTransformations = getAllowedTransformationsForUser(
+    transformations,
+    user,
+    { category }
+  );
 
   console.log(
     "Transform category:",
     category || "none",
-    "| Matches:",
+    "| Allowed matches:",
     matchingTransformations.length
   );
 
   if (matchingTransformations.length === 0) {
     return {
       ok: false,
-      message: category
-        ? `There are no transformations loaded for category \`${category}\` yet.`
-        : "There are no transformations loaded yet.\nThe magic cupboard is sadly empty.",
+      message:
+        category && categoryTransformations.length === 0
+          ? `There are no transformations loaded for category \`${category}\` yet.`
+          : "There are no transformations available for that user after their category opt-outs.",
     };
   }
 

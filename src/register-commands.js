@@ -38,6 +38,17 @@ const commands = [
     .toJSON(),
 
   new SlashCommandBuilder()
+    .setName("listtransformations")
+    .setDescription("List loaded transformations or view one transformation picture.")
+    .addStringOption((option) =>
+      option
+        .setName("id")
+        .setDescription("Optional transformation id to view on its own.")
+        .setRequired(false)
+    )
+    .toJSON(),
+
+  new SlashCommandBuilder()
     .setName("bbhelp")
     .setDescription("Show help for BiiBiiBoo TF Bot.")
     .toJSON(),

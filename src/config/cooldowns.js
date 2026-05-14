@@ -5,6 +5,7 @@ const COMMAND_COOLDOWNS = {
   resetform: 30 * 1000,
   transform: 3 * 1000,
   randomtransform: 60 * 1000,
+  listtransformations: 10 * 1000,
   bbhelp: 5 * 1000,
 };
 
